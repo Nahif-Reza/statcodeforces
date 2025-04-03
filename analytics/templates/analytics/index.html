@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces User Stats</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Codeforces Handle</h1>
+        <form action="{% url 'user_stats' %}" method="get">
+            <input type="text" name="handle" placeholder="Enter your handle" required>
+
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" id="start_date">
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" id="end_date">
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <script>
+        const today = new Date();
+        const lastSixMonths = new Date();
+        lastSixMonths.setMonth(today.getMonth() - 6);
+
+        const formatDate = (date) => {
+            return date.toISOString().split('T')[0];
+        };
+
+        document.getElementById('start_date').value = formatDate(lastSixMonths);
+        document.getElementById('end_date').value = formatDate(today);
+    </script>
+</body>
+</html>

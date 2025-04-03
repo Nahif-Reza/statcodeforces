@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ handle }}'s Codeforces Stats</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Codeforces Stats for {{ handle }}</h1>
+
+        {% if problems %}
+        <div class="total-score">
+            <h3>Total Score: {{ total_score }}</h3>
+            <h3>Total Solved: {{ total_solved }}</h3>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Problem Name</th>
+                    <th>Rating</th>
+                    <th>Submission Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for problem in problems %}
+                <tr>
+                    <td>{{ problem.name }}</td>
+                    <td>{{ problem.rating }}</td>
+                    <td>{{ problem.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No problems found for this user.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
