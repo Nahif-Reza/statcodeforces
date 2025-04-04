@@ -1,0 +1,13 @@
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+db.sqlite3
+
+# Django static and media files
+staticfiles/
+media/
+
+# Environment variables
+.env
