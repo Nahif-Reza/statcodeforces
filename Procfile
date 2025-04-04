@@ -1,1 +1,0 @@
-web: gunicorn statcodeforces.wsgi --log-file -
